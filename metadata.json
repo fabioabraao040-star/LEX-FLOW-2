@@ -1,0 +1,6 @@
+{
+  "name": "Lex Flow — Automação e Atendimento WhatsApp SaaS",
+  "description": "Centralize conversas, acompanhe seus clientes e automatize o atendimento comercial com inteligência artificial quando precisar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

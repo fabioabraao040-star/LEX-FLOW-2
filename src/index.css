@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --lex-navy: #172B3A;
+    --lex-teal: #244B56;
+    --lex-gold: #C9A96E;
+    --lex-ivory: #F8F6F0;
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  }
+
+  * {
+    font-family: var(--font-inter);
+    letter-spacing: -0.011em;
+  }
+
+  body {
+    background-color: var(--lex-ivory);
+    color: var(--lex-navy);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom subtle scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(23, 43, 58, 0.15);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(23, 43, 58, 0.28);
+  }
+}
+
+/* Lex Flow Theme Utility Classes */
+.bg-lex-navy { background-color: #172B3A; }
+.bg-lex-teal { background-color: #244B56; }
+.bg-lex-gold { background-color: #C9A96E; }
+.bg-lex-ivory { background-color: #F8F6F0; }
+
+.text-lex-navy { color: #172B3A; }
+.text-lex-teal { color: #244B56; }
+.text-lex-gold { color: #C9A96E; }
+.text-lex-ivory { color: #F8F6F0; }
+
+.border-lex-navy { border-color: #172B3A; }
+.border-lex-teal { border-color: #244B56; }
+.border-lex-gold { border-color: #C9A96E; }
+.border-lex-ivory { border-color: #F8F6F0; }
