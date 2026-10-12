@@ -327,7 +327,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#F8F6F0] text-[#172B3A] font-['Inter',sans-serif]">
+    <div className="flex min-h-screen w-full overflow-auto bg-[#F8F6F0] text-[#172B3A] font-['Inter',sans-serif]">
       {/* Sidebar Comercial */}
       <Sidebar
         activeTab={activeTab}
