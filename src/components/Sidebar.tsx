@@ -3,12 +3,10 @@ import {
   LayoutDashboard, 
   MessageSquare, 
   Users, 
-  BarChart3, 
   CreditCard, 
-  Settings, 
-  ShieldCheck, 
-  Wifi, 
-  ChevronRight, 
+  Settings,
+  Wifi,
+  ChevronRight,
   LogOut,
   Building2,
   Lock
@@ -37,56 +35,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onLogout,
 }) => {
   const menuItems: { id: NavigationTab; label: string; icon: React.ReactNode; badge?: number; badgeColor?: string }[] = [
-    {
-      id: 'dashboard',
-      label: 'Painel Geral',
-      icon: <LayoutDashboard className="w-5 h-5" />
-    },
-    {
-      id: 'whatsapp',
-      label: 'Atendimento WhatsApp',
-      icon: <MessageSquare className="w-5 h-5" />,
-      badge: unreadCount > 0 ? unreadCount : undefined,
-      badgeColor: 'bg-[#EF4444] text-white'
-    },
-    {
-      id: 'clientes',
-      label: 'Clientes',
-      icon: <Users className="w-5 h-5" />
-    },
-    
-    {
-      id: 'assinatura',
-      label: 'Assinatura e Pagamentos',
-      icon: <CreditCard className="w-5 h-5" />
-    },
-    {
-      id: 'configuracoes',
-      label: 'Configurações',
-      icon: <Settings className="w-5 h-5" />
-    }
+    { id: 'dashboard', label: 'Painel Geral', icon: <LayoutDashboard className="w-5 h-5" /> },
+    { id: 'whatsapp', label: 'Atendimento WhatsApp', icon: <MessageSquare className="w-5 h-5" />, badge: unreadCount > 0 ? unreadCount : undefined, badgeColor: 'bg-[#EF4444] text-white' },
+    { id: 'clientes', label: 'Clientes', icon: <Users className="w-5 h-5" /> },
+    { id: 'assinatura', label: 'Assinatura e Pagamentos', icon: <CreditCard className="w-5 h-5" /> },
+    { id: 'configuracoes', label: 'Configurações', icon: <Settings className="w-5 h-5" /> }
   ];
 
   return (
     <>
-      {/* Mobile Backdrop */}
       {isOpenMobile && (
-        <div 
+        <div
           onClick={onCloseMobile}
           className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-xs transition-opacity"
           aria-hidden="true"
         />
       )}
 
-      {/* Main Sidebar */}
-      <aside 
+      <aside
         className={`fixed lg:static top-0 left-0 bottom-0 z-50 w-72 bg-[#172B3A] text-white flex flex-col justify-between border-r border-[#244B56] shadow-xl transition-transform duration-300 ease-in-out ${
           isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
-        {/* Brand & Top Area */}
         <div className="flex flex-col">
-          {/* Logo Header */}
           <div className="p-5 border-b border-[#244B56] flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-11 h-11 rounded-xl bg-[#244B56] border-2 border-[#C9A96E] flex items-center justify-center text-[#E5C384] shadow-md">
@@ -104,7 +75,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
           </div>
 
-          {/* WhatsApp Status Indicator */}
           <div className="mx-4 mt-3.5 p-3 rounded-lg bg-[#244B56]/50 border border-[#244B56] flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-2.5 w-2.5">
@@ -121,7 +91,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Wifi className="w-3.5 h-3.5 text-emerald-400" />
           </div>
 
-          {/* Navigation Links */}
           <nav className="p-4 space-y-1.5 mt-2" aria-label="Navegação Principal">
             {menuItems.map((item) => {
               const isActive = activeTab === item.id;
@@ -158,9 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </nav>
         </div>
 
-        {/* User Profile & Footer Area */}
         <div className="p-4 border-t border-[#244B56] bg-[#12222e]">
-          {/* Admin platform link */}
           <div className="mb-3 px-1">
             <button
               onClick={() => { onTabChange('admin'); onCloseMobile(); }}
@@ -188,7 +155,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <p className="text-[10px] text-gray-400 truncate">{tenant?.name || 'Empresa'}</p>
               </div>
             </div>
-            <button 
+            <button
               onClick={onLogout}
               title="Sair da conta"
               className="p-1.5 text-gray-400 hover:text-[#C9A96E] hover:bg-[#244B56] rounded transition-colors shrink-0"
@@ -196,7 +163,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <LogOut className="w-4 h-4" />
             </button>
           </div>
-          
+
           <div className="mt-2.5 flex items-center justify-between text-[10px] text-gray-400 px-1 font-medium">
             <span className="flex items-center gap-1">
               <Building2 className="w-3 h-3 text-[#C9A96E]" /> {tenant?.planId === 'ia' ? 'Plano IA Ativo' : 'Plano Essencial'}
