@@ -6,22 +6,46 @@
 import { db, Conversation, Message, Customer } from './db';
 import { geminiService } from './geminiService';
 
+function isSafeEnvValue(value: string | undefined): boolean {
+  if (!value) return false;
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  if (trimmed.length > 2000) return false;
+  if (/\r|\n/.test(trimmed)) return false;
+  if (/<\s*!?doctype|<\s*html|<script|<\/\w+>/i.test(trimmed)) return false;
+  return true;
+}
+
 export class WhatsAppBusinessService {
   private verifyToken: string;
   private apiToken: string;
   private phoneNumberId: string;
 
   constructor() {
-    this.verifyToken = process.env.WHATSAPP_VERIFY_TOKEN || 'lexflow_meta_verify_token_secure';
-    this.apiToken = process.env.WHATSAPP_API_TOKEN || '';
-    this.phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID || '';
+    const verifyToken = process.env.WHATSAPP_VERIFY_TOKEN?.trim();
+    const apiToken = process.env.WHATSAPP_API_TOKEN?.trim();
+    const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID?.trim();
+
+    if (!isSafeEnvValue(verifyToken)) {
+      console.error('[WhatsApp] WHATSAPP_VERIFY_TOKEN ausente ou inválida. Verifique a variável na Vercel.');
+    }
+    if (!isSafeEnvValue(apiToken)) {
+      console.error('[WhatsApp] WHATSAPP_API_TOKEN ausente ou inválida. Verifique a variável na Vercel.');
+    }
+    if (!isSafeEnvValue(phoneNumberId)) {
+      console.error('[WhatsApp] WHATSAPP_PHONE_NUMBER_ID ausente ou inválida. Verifique a variável na Vercel.');
+    }
+
+    this.verifyToken = isSafeEnvValue(verifyToken) ? verifyToken! : '';
+    this.apiToken = isSafeEnvValue(apiToken) ? apiToken! : '';
+    this.phoneNumberId = isSafeEnvValue(phoneNumberId) ? phoneNumberId! : '';
   }
 
   /**
    * Validação de Webhook do WhatsApp (Meta Challenge)
    */
   public verifyWebhook(mode: string, token: string, challenge: string): string | null {
-    if (mode === 'subscribe' && token === this.verifyToken) {
+    if (mode === 'subscribe' && token && challenge && token === this.verifyToken) {
       return challenge;
     }
     return null;
