@@ -5,7 +5,7 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
-import { apiRouter } from '../server/routes';
+import { apiRouter } from '../server/routes.js';
 
 dotenv.config();
 

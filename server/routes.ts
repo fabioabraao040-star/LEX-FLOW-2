@@ -3,11 +3,11 @@
  */
 
 import { Router, Request, Response } from 'express';
-import { db, PLANS, PlanId, Tenant } from './db';
-import { efiService } from './efiService';
-import { whatsappService } from './whatsappService';
-import { geminiService } from './geminiService';
-import { supabaseService } from './supabase';
+import { db, PLANS, PlanId, Tenant } from './db.js';
+import { efiService } from './efiService.js';
+import { whatsappService } from './whatsappService.js';
+import { geminiService } from './geminiService.js';
+import { supabaseService } from './supabase.js';
 
 export const apiRouter = Router();
 

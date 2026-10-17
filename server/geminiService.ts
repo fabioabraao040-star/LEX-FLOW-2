@@ -5,7 +5,7 @@
  */
 
 import { GoogleGenAI } from '@google/genai';
-import { db, Conversation, Message, Tenant } from './db';
+import { db, Conversation, Message, Tenant } from './db.js';
 
 export class GeminiAiService {
   private ai: GoogleGenAI | null = null;

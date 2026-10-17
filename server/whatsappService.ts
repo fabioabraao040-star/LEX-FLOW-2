@@ -3,8 +3,8 @@
  * Documentação: https://developers.facebook.com/docs/whatsapp/cloud-api
  */
 
-import { db, Conversation, Message, Customer } from './db';
-import { geminiService } from './geminiService';
+import { db, Conversation, Message, Customer } from './db.js';
+import { geminiService } from './geminiService.js';
 
 export class WhatsAppBusinessService {
   private verifyToken: string;

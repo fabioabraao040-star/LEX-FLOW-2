@@ -4,7 +4,7 @@
  * e registro persistente de mensagens e auditoria.
  */
 
-import { supabaseService } from './supabase';
+import { supabaseService } from './supabase.js';
 
 export type SubscriptionStatus = 
   | 'trialing' 

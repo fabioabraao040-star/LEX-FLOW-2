@@ -14,7 +14,7 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 import https from 'https';
-import { db, PixCharge, PLANS, PlanId } from './db';
+import { db, PixCharge, PLANS, PlanId } from './db.js';
 
 // Função para calcular CRC16-CCITT (Polinômio 0x1021) padrão do Banco Central
 function computeCrc16(payload: string): string {
